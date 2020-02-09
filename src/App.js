@@ -6,6 +6,8 @@ import Tab from "./components/UILibrary/Tab";
 import TabLinks from "./components/UILibrary/TabLinks";
 import TabLink from "./components/UILibrary/TabLink";
 import ErrorBoundary from "./components/ErrorBoundary";
+import SampleTable from "./components/SampleTable";
+
 import "./css/index.scss";
 const App = () => {
   return (
@@ -18,7 +20,7 @@ const App = () => {
               <TabLink id="1">Tab-2</TabLink>
             </TabLinks>
             <Tab id="0" name="Tab-1">
-              <h2>Welcome to Tab 1</h2>
+              <SampleTable />
             </Tab>
             <Tab id="1" name="Tab-2">
               <h2>Welcome to Tab 2</h2>
