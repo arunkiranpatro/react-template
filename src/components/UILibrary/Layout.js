@@ -1,18 +1,22 @@
 import React from "react";
 
 const Layout = function(props) {
-  let { className, columns } = props;
+  let { className, columns } = props,
+    mainBody = [],
+    rows = [],
+    tempColumnName,
+    rowNum = 1;
+  const myChildren = React.Children.toArray(props.children);
   className = className || "";
   const containerClassName = "row-col-container " + className;
   columns = Number.parseInt(columns);
-  const myChildren = React.Children.toArray(props.children);
   if (myChildren.length <= 0) {
     return null;
   }
-  let mainBody = [];
-  let rows = [];
-  let tempColumnName = 12 / columns + "";
-  let rowNum = 1;
+  mainBody = [];
+  rows = [];
+  tempColumnName = 12 / columns + "";
+  rowNum = 1;
   for (let i = 1; i <= myChildren.length; i++) {
     let columnClassName =
       "column-" + tempColumnName + " " + className + "-column-";
