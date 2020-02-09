@@ -1,7 +1,7 @@
 {
-  "name": "react-template",
+  "name": "react-app",
   "version": "1.0.0",
-  "description": "A react-template structure",
+  "description": "A sample react app",
   "main": "index.js",
   "scripts": {
     "test": "jest",
