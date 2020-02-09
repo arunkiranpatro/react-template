@@ -12,12 +12,12 @@ const Layout = function(props) {
   let mainBody = [];
   let rows = [];
   let tempColumnName = 12 / columns + "";
-  let rowNum =1;
+  let rowNum = 1;
   for (let i = 1; i <= myChildren.length; i++) {
     let columnClassName =
-    "column-" + tempColumnName + " " + className + "-column-";
+      "column-" + tempColumnName + " " + className + "-column-";
     let rowClassName = "row" + " " + className + "-row-";
-    columnClassName = columnClassName+i;
+    columnClassName = columnClassName + i;
     rows.push(
       <div className={columnClassName} key={columnClassName}>
         {myChildren[i - 1]}
@@ -25,7 +25,7 @@ const Layout = function(props) {
     );
     /** suppose children =5 and columns=2  */
     if (i % columns === 0 || i === myChildren.length) {
-      rowClassName=rowClassName+rowNum;
+      rowClassName = rowClassName + rowNum;
       mainBody.push(
         <div className={rowClassName} key={"row" + i}>
           {rows}

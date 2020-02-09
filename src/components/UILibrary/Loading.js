@@ -1,9 +1,5 @@
-import React from 'react';
+import React from "react";
 
 export default function Loading() {
-    return (
-        <div className="data-row">
-            Loading...
-        </div>
-      );
+  return <div className="data-row">Loading...</div>;
 }
