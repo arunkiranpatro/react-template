@@ -1,11 +1,11 @@
 import React from "react";
 import { Provider } from "react-redux";
-import store from "./src/store/index";
-import Tabs from "./src/components/UILibrary/Tabs";
-import Tab from "./src/components/UILibrary/Tab";
-import TabLinks from "./src/components/UILibrary/TabLinks";
-import TabLink from "./src/components/UILibrary/TabLink";
-import ErrorBoundary from "./src/components/ErrorBoundary";
+import store from "./store/index";
+import Tabs from "./components/UILibrary/Tabs";
+import Tab from "./components/UILibrary/Tab";
+import TabLinks from "./components/UILibrary/TabLinks";
+import TabLink from "./components/UILibrary/TabLink";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./css/index.scss";
 const App = () => {
   return (
