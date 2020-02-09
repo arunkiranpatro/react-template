@@ -1,11 +1,12 @@
 import React from "react";
 
 const TableColumn = props => {
-  const { children, id, onSort, sortable, arialabel } = props;
+  const { children, id, onSort, sortable } = props;
   let className = "table-col",
     onClick,
     ariaSort,
-    sortIcon;
+    sortIcon,
+    rest;
   if (sortable) {
     className = "table-col" + " sortable";
     onClick = sortColumn;
@@ -18,7 +19,7 @@ const TableColumn = props => {
   function sortColumn(e) {
     onSort(e.target.id);
   }
-  let rest = {
+  rest = {
     className,
     onClick,
     "aria-sort": ariaSort

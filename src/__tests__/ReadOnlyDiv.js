@@ -16,6 +16,7 @@ describe("A read only div suite", function() {
     expect(markup.hasClass("test")).toBe(true);
     expect(markup.find("span.field-value")).toHaveLength(1);
   });
+
   it("should render without class name", function() {
     const markup = shallow(<Details label="test label" value="test" />);
     expect(markup.find("div")).toHaveLength(1);
@@ -26,6 +27,7 @@ describe("A read only div suite", function() {
     expect(markup.find("span").text()).toContain("test");
     expect(markup.find("span.field-value")).toHaveLength(1);
   });
+
   it("should render without class name with ccicon", function() {
     const markup = shallow(
       <Details label="test label" value="test" ccicon="true" />
@@ -38,6 +40,7 @@ describe("A read only div suite", function() {
     expect(markup.find("span").text()).toContain("test");
     expect(markup.find("span.field-value")).toHaveLength(1);
   });
+
   it("should render children", function() {
     const markup = shallow(
       <Details label="test label" ccicon="true">

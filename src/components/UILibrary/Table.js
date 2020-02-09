@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ArraySort from "array-sort";
 import PropTypes from "prop-types";
-const Table = function(props) {
-  const { onSort = onSortDefault } = props;
-  const [sortColumn, setSortColumn] = useState(props.sortColumn);
-  const [sortDirection, setSortDirection] = useState(props.sortDirection);
 
+const Table = function(props) {
+  const { onSort = onSortDefault } = props,
+    [sortColumn, setSortColumn] = useState(props.sortColumn),
+    [sortDirection, setSortDirection] = useState(props.sortDirection);
   function onSortDefault(column) {
     let { data } = props;
     if (column === sortColumn) {
