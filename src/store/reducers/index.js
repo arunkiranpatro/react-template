@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import errorReducer from "./errorReducer";
-import ajaxReducer from "./ajaxReducer";
+import DCReducer from "./DCReducer";
 
 export default combineReducers({
   errors: errorReducer,
-  ajaxContainer: ajaxReducer
+  multipleDC: DCReducer
 });

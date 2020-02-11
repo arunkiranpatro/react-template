@@ -1,29 +1,19 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Provider } from "react-redux";
 import store from "./store/index";
 import Tabs from "./components/UILibrary/Tabs";
 import Tab from "./components/UILibrary/Tab";
 import TabLinks from "./components/UILibrary/TabLinks";
 import TabLink from "./components/UILibrary/TabLink";
-import AjaxContainer from "./components/UILibrary/AjaxContainer";
+import SingleDynamicContainer from "./components/UILibrary/SingleDynamicContainer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import SampleComponent from "./components/SampleComponent";
-
-import { SET_COMPONENT } from "./store/constants";
-
 import "./css/index.scss";
 
 function lazyComponent() {
-  const SampleTable = React.lazy(() => import("./components/SampleTable"));
-  const component = (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SampleTable />
-    </Suspense>
-  );
-  store.dispatch({
-    type: SET_COMPONENT,
-    payload: { component: component }
-  });
+  let SampleTable = React.lazy(() => import("./components/SampleTable"));
+  SampleTable = React.createElement(SampleTable);
+  SingleDynamicContainer.loadComponent(SampleTable);
 }
 const App = () => {
   return (
@@ -37,7 +27,7 @@ const App = () => {
             </TabLinks>
             <Tab id="0" name="Tab-1">
               <a onClick={lazyComponent}>Render Table in Ajax Component</a>
-              <AjaxContainer initial={<SampleComponent />} />
+              <SingleDynamicContainer initial={<SampleComponent />} />
             </Tab>
             <Tab id="1" name="Tab-2">
               <h2>Welcome to Tab 2</h2>
