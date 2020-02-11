@@ -6,7 +6,7 @@ const Tab = props => {
     renderBody = false;
   const { activeId, id, deferLoaded = false } = props;
   const children = React.Children.map(props.children, child => {
-    return React.cloneElement(child, {});
+    return React.cloneElement(child);
   });
   if (activeId === id) {
     className += " tab-active";
