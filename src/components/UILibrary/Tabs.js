@@ -1,27 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-class Tabs extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeId: "0"
-    };
-    this.handleClick = this.handleClick.bind(this);
+function Tabs(props) {
+  let defaultActive = props.defaultActive || "0";
+  const [activeId, setActiveId] = useState(defaultActive);
+  function handleClick(id) {
+    setActiveId(id);
   }
-  handleClick(id) {
-    this.setState({ activeId: id });
-  }
-
-  render() {
-    const { activeId } = this.state;
-    const children = React.Children.map(this.props.children, child => {
-      return React.cloneElement(child, {
-        activeId,
-        handleClick: this.handleClick
-      });
+  const children = React.Children.map(props.children, child => {
+    return React.cloneElement(child, {
+      activeId: activeId,
+      handleClick: handleClick
     });
+  });
 
-    return <div className="tab-container">{children}</div>;
-  }
+  return <div className="tab-container">{children}</div>;
 }
 export default Tabs;

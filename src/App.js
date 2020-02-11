@@ -7,13 +7,15 @@ import TabLinks from "./components/UILibrary/TabLinks";
 import TabLink from "./components/UILibrary/TabLink";
 import SingleDynamicContainer from "./components/UILibrary/SingleDynamicContainer";
 import ErrorBoundary from "./components/ErrorBoundary";
-import SampleComponent from "./components/SampleComponent";
+import SampleTable from "./components/SampleTable";
 import "./css/index.scss";
 
 function lazyComponent() {
-  let SampleTable = React.lazy(() => import("./components/SampleTable"));
-  SampleTable = React.createElement(SampleTable);
-  SingleDynamicContainer.loadComponent(SampleTable);
+  let SampleComponent = React.lazy(() =>
+    import("./components/SampleComponent")
+  );
+  SampleComponent = React.createElement(SampleComponent);
+  SingleDynamicContainer.loadComponent(SampleComponent);
 }
 const App = () => {
   return (
@@ -27,7 +29,7 @@ const App = () => {
             </TabLinks>
             <Tab id="0" name="Tab-1">
               <a onClick={lazyComponent}>Render Table in Ajax Component</a>
-              <SingleDynamicContainer initial={<SampleComponent />} />
+              <SingleDynamicContainer initial={<SampleTable />} />
             </Tab>
             <Tab id="1" name="Tab-2">
               <h2>Welcome to Tab 2</h2>

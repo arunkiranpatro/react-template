@@ -3,10 +3,10 @@ import Loading from "./Loading";
 
 export default class DynamicContainer extends React.Component {
   constructor(props) {
+    super(props);
     if (!!DynamicContainer.instance) {
       return DynamicContainer.instance;
     }
-    super(props);
     this.state = {
       Component: null
     };
