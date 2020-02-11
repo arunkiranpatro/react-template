@@ -30,4 +30,9 @@ ul.tab-links {
 
 div.tab-body {
     margin-top: 0.5em;
+    display: none;
+
+    &.tab-active {
+        display: block;
+    }
 }

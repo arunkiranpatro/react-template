@@ -31,7 +31,7 @@ const App = () => {
               <a onClick={lazyComponent}>Render Table in Ajax Component</a>
               <SingleDynamicContainer initial={<SampleTable />} />
             </Tab>
-            <Tab id="1" name="Tab-2">
+            <Tab id="1" name="Tab-2" deferLoaded={true}>
               <h2>Welcome to Tab 2</h2>
             </Tab>
           </Tabs>
