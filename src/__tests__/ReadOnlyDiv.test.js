@@ -10,7 +10,7 @@ describe("A read only div suite", function() {
     expect(markup.find("div")).toHaveLength(1);
     expect(markup.find("label")).toHaveLength(1);
     expect(markup.find("span")).toHaveLength(1);
-    expect(markup.find("i")).toHaveLength(0);
+    expect(markup.find("button")).toHaveLength(0);
     expect(markup.find("label").text()).toContain("test label");
     expect(markup.find("span").text()).toContain("test");
     expect(markup.hasClass("test")).toBe(true);
@@ -21,7 +21,7 @@ describe("A read only div suite", function() {
     expect(markup.find("div")).toHaveLength(1);
     expect(markup.find("label")).toHaveLength(1);
     expect(markup.find("span")).toHaveLength(1);
-    expect(markup.find("i.cc-icon")).toHaveLength(0);
+    expect(markup.find("button.cc-icon")).toHaveLength(0);
     expect(markup.find("label").text()).toContain("test label");
     expect(markup.find("span").text()).toContain("test");
     expect(markup.find("span.field-value")).toHaveLength(1);
@@ -33,7 +33,7 @@ describe("A read only div suite", function() {
     expect(markup.find("div")).toHaveLength(1);
     expect(markup.find("label")).toHaveLength(1);
     expect(markup.find("span")).toHaveLength(1);
-    expect(markup.find("i")).toHaveLength(1);
+    expect(markup.find("button")).toHaveLength(1);
     expect(markup.find("label").text()).toContain("test label");
     expect(markup.find("span").text()).toContain("test");
     expect(markup.find("span.field-value")).toHaveLength(1);
@@ -47,7 +47,7 @@ describe("A read only div suite", function() {
     expect(markup.find("div")).toHaveLength(2);
     expect(markup.find("label")).toHaveLength(1);
     expect(markup.find("span")).toHaveLength(0);
-    expect(markup.find("i")).toHaveLength(1);
+    expect(markup.find("button")).toHaveLength(1);
     expect(markup.find("label").text()).toContain("test label");
     expect(markup.find("span.field-value")).toHaveLength(0);
     expect(markup.text()).toContain("Test Children");
@@ -62,7 +62,7 @@ describe("A read only div suite", function() {
     expect(markup.find("div")).toHaveLength(2);
     expect(markup.find("label")).toHaveLength(1);
     expect(markup.find("span")).toHaveLength(0);
-    expect(markup.find("i")).toHaveLength(1);
+    expect(markup.find("button")).toHaveLength(1);
     expect(markup.find("label").text()).toContain("test label");
     expect(markup.find("span.field-value")).toHaveLength(0);
     expect(markup.text()).toContain("Test Children");

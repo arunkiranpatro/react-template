@@ -9,6 +9,10 @@ const TabLinks = props => {
     });
   });
 
-  return <ul className="tab-links">{links}</ul>;
+  return (
+    <ul className="tab-links" role="tablist">
+      {links}
+    </ul>
+  );
 };
 export default TabLinks;

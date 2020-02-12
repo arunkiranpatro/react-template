@@ -12,16 +12,16 @@ const Details = function(props) {
   return (
     <div className={className}>
       {label && label !== "" && (
-        <label aria-label={label}>
+        <label>
           {label}
           {"   "}
         </label>
       )}
       {body}
       {ccicon === "true" && (
-        <i className="cc-icon">
+        <button className="cc-icon" aria-label="show all">
           <FaCopy />
-        </i>
+        </button>
       )}
     </div>
   );
