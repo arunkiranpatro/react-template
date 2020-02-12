@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from "react";
+import React, { useState, useReducer, useRef } from "react";
 import Loading from "./Loading";
 
 const initalState = {
@@ -6,6 +6,7 @@ const initalState = {
   isLoading: false,
   results: []
 };
+let _timer;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -22,19 +23,25 @@ function reducer(state, action) {
 
 function AutoComplete(props) {
   const [state, dispatch] = useReducer(reducer, initalState);
-  const { delay = 1000 } = props;
+  const { delay = 500 } = props;
   let { isLoading, results, searchText } = state;
+  const searchField = useRef("");
+
   function onChangeAC(e) {
     dispatch({ type: "SET_SEARCH_TEXT", payload: e.target.value });
-    let _timer;
     if (_timer) {
       clearTimeout(_timer);
       _timer = setTimeout(search, delay);
+    } else {
+      search();
+      _timer = setTimeout(function() {
+        _timer = void 0;
+      }, delay);
     }
-    _timer = setTimeout(search, delay);
   }
 
   function search() {
+    let searchText = searchField.current.value;
     if (searchText !== "") {
       dispatch({ type: "SET_LOADING" });
       props.getResults(searchText).then(result => {
@@ -72,7 +79,12 @@ function AutoComplete(props) {
 
   return (
     <div className="autocomplete-container">
-      <input type="text" onChange={onChangeAC} value={searchText} />
+      <input
+        type="text"
+        onChange={onChangeAC}
+        value={searchText}
+        ref={searchField}
+      />
       {isLoading && <Loading />}
       {renderResults()}
     </div>

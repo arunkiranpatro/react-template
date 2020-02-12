@@ -11,17 +11,26 @@
 
 .autocomplete-container {
     position: relative;
-    display: inline-block;
 
+    >input {
+        line-height: 1.5em;
+        min-width: 300px;
+        font-size: 1.5em;
+    }
 
     >.loading-div {
         @extend.absolute-popover;
+        max-width: 300px;
+        max-height: 300px;
         border: $default-border;
         padding: 0.5em;
     }
 
     >.autocomplete-results {
         @extend.absolute-popover;
+        max-width: 300px;
+        max-height: 300px;
+        overflow: auto;
 
         >.autocomplete-results-row {
             border: $default-border;
