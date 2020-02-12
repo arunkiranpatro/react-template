@@ -1,7 +1,7 @@
 {
-  "name": "digital-crm",
+  "name": "react-template",
   "version": "1.0.0",
-  "description": "A digital CRM Product",
+  "description": "A react starter kit",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -12,6 +12,10 @@
   "keywords": [],
   "author": "Arun Kiran Patro",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arunkiranpatro/react-template.git"
+  },
   "dependencies": {
     "array-sort": "^1.0.0",
     "axios": "^0.19.2",
