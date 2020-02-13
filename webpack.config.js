@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: { path: path.resolve(__dirname, "dist"), filename: "bundle.js" },
-  mode: "development",
+  mode: "production",
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
@@ -20,6 +20,10 @@ module.exports = {
           // Compiles Sass to CSS
           "sass-loader"
         ]
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [{ loader: "url-loader" }]
       }
     ]
   },

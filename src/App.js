@@ -8,6 +8,7 @@ import TabLink from "./components/UILibrary/TabLink";
 import SingleDynamicContainer from "./components/UILibrary/SingleDynamicContainer";
 import ErrorBoundary from "./components/ErrorBoundary";
 import SampleTable from "./components/SampleTable";
+
 import "./css/index.scss";
 
 function lazyComponent() {
