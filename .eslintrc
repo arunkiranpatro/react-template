@@ -1,6 +1,6 @@
  {
      "parser": "babel-eslint",
-     "extends": "airbnb",
+     "extends": ["airbnb", "prettier"],
      "rules": {
          "arrow-parens": "off",
          "comma-dangle": "off",

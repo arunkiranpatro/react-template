@@ -16,14 +16,11 @@
         "type": "git",
         "url": "https://github.com/arunkiranpatro/react-template.git"
     },
-    "optimization": {
-        "splitChunks": {
-            "chunks": "all"
-        }
-    },
+
     "dependencies": {
         "array-sort": "^1.0.0",
         "axios": "^0.19.2",
+        "eslint-config-prettier": "^6.10.0",
         "moment": "^2.24.0",
         "prop-types": "^15.7.2",
         "react": "^16.12.0",
