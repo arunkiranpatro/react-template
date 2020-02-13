@@ -1,13 +1,13 @@
 import React, { useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import debounce from './Debounce';
 
 const initalState = {
     searchText: '',
     isLoading: false,
     results: [],
 };
-let _timer;
 
 function reducer(state, action) {
     switch (action.type) {
@@ -32,18 +32,11 @@ function AutoComplete(props) {
     const { delay = 500 } = props;
     const { isLoading, results, searchText } = state;
     const searchField = useRef('');
+    const _search = useRef(debounce(search, delay)).current;
 
     function onChangeAC(e) {
         dispatch({ type: 'SET_SEARCH_TEXT', payload: e.target.value });
-        if (_timer) {
-            clearTimeout(_timer);
-            _timer = setTimeout(search, delay);
-        } else {
-            search();
-            _timer = setTimeout(() => {
-                _timer = void 0;
-            }, delay);
-        }
+        _search();
     }
 
     function search() {
@@ -74,34 +67,34 @@ function AutoComplete(props) {
         let body = '';
         if (results.length > 0) {
             body = (
-              <div className="autocomplete-results">
-                {results.map((result, index) => (
-                  <div
-                    className="autocomplete-results-row"
-                    key={index}
-                    id={`ac-results-${index}`}
-                    onClick={onSelect}
-                  >
-                    {result}
-                  </div>
+                <div className="autocomplete-results">
+                    {results.map((result, index) => (
+                        <div
+                            className="autocomplete-results-row"
+                            key={index}
+                            id={`ac-results-${index}`}
+                            onClick={onSelect}
+                        >
+                            {result}
+                        </div>
                     ))}
-              </div>
+                </div>
             );
         }
         return body;
     }
 
     return (
-      <div className="autocomplete-container">
-        <input
-          type="text"
-          onChange={onChangeAC}
-          value={searchText}
-          ref={searchField}
-        />
-        {isLoading && <Loading />}
-        {renderResults()}
-      </div>
+        <div className="autocomplete-container">
+            <input
+                type="text"
+                onChange={onChangeAC}
+                value={searchText}
+                ref={searchField}
+            />
+            {isLoading && <Loading />}
+            {renderResults()}
+        </div>
     );
 }
 
