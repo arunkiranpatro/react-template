@@ -1,4 +1,5 @@
 import React, { useReducer, useRef } from 'react';
+import PropTypes from 'prop-types';
 import Loading from './Loading';
 
 const initalState = {
@@ -49,9 +50,19 @@ function AutoComplete(props) {
         const searchText = searchField.current.value;
         if (searchText !== '') {
             dispatch({ type: 'SET_LOADING', payload: searchText });
-            props.getResults(searchText).then(result => {
-                dispatch({ type: 'FETCH_COMPLETE', payload: result });
-            });
+            const resultPromise = props.getResults(searchText);
+            if (
+                resultPromise !== null &&
+                (typeof resultPromise === 'object' ||
+                    typeof resultPromise === 'function') &&
+                typeof resultPromise.then === 'function'
+            ) {
+                resultPromise.then(result => {
+                    dispatch({ type: 'FETCH_COMPLETE', payload: result });
+                });
+            } else {
+                dispatch({ type: 'FETCH_COMPLETE', payload: [] });
+            }
         }
     }
 
@@ -63,35 +74,39 @@ function AutoComplete(props) {
         let body = '';
         if (results.length > 0) {
             body = (
-                <div className="autocomplete-results">
-                    {results.map((result, index) => (
-                        <div
-                            className="autocomplete-results-row"
-                            key={index}
-                            id={`ac-results-${index}`}
-                            onClick={onSelect}
-                        >
-                            {result}
-                        </div>
+              <div className="autocomplete-results">
+                {results.map((result, index) => (
+                  <div
+                    className="autocomplete-results-row"
+                    key={index}
+                    id={`ac-results-${index}`}
+                    onClick={onSelect}
+                  >
+                    {result}
+                  </div>
                     ))}
-                </div>
+              </div>
             );
         }
         return body;
     }
 
     return (
-        <div className="autocomplete-container">
-            <input
-                type="text"
-                onChange={onChangeAC}
-                value={searchText}
-                ref={searchField}
-            />
-            {isLoading && <Loading />}
-            {renderResults()}
-        </div>
+      <div className="autocomplete-container">
+        <input
+          type="text"
+          onChange={onChangeAC}
+          value={searchText}
+          ref={searchField}
+        />
+        {isLoading && <Loading />}
+        {renderResults()}
+      </div>
     );
 }
+
+AutoComplete.propTypes = {
+    getResults: PropTypes.func.isRequired,
+};
 
 export default AutoComplete;

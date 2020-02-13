@@ -4,12 +4,12 @@ import AutoComplete from './UILibrary/AutoComplete';
 
 function getResults(x) {
     const list = ['arun', 'ramya', 'ram', 'wk'];
-    let p = new Promise(function(resolve, reject) {
+    const p = new Promise(function(resolve, reject) {
         setTimeout(function() {
-            let results = list.filter(value => {
+            const results = list.filter(value => {
                 if (value.search(x) != -1) {
                     return true;
-                } else return false;
+                } return false;
             });
             resolve(results);
         }, 1000);
@@ -20,9 +20,9 @@ function getResults(x) {
 
 export default function SampleComponent() {
     return (
-        <Layout columns="1">
-            Hello Dynamic Container
-            <AutoComplete getResults={getResults} />
-        </Layout>
+      <Layout columns="1">
+        Hello Dynamic Container
+        <AutoComplete getResults={getResults} />
+      </Layout>
     );
 }
