@@ -1,10 +1,10 @@
-import React, { Suspense } from "react";
-import Loading from "./Loading";
+import React, { Suspense } from 'react';
+import Loading from './Loading';
 
 export default class DynamicContainer extends React.Component {
   constructor(props) {
     super(props);
-    if (!!DynamicContainer.instance) {
+    if (DynamicContainer.instance) {
       return DynamicContainer.instance;
     }
     this.state = {
@@ -15,17 +15,17 @@ export default class DynamicContainer extends React.Component {
 
   componentDidMount() {
     const Component = this.props.initial;
-    this.setState({ Component: Component });
+    this.setState({ Component });
   }
 
   static loadComponent(Component) {
     Component = <Suspense fallback={<Loading />}>{Component}</Suspense>;
-    DynamicContainer.instance.setState({ Component: Component });
+    DynamicContainer.instance.setState({ Component });
   }
 
   render() {
     const { Component } = this.state;
-    let body = "";
+    let body = '';
     if (Component && Object.keys(Component).length > 0) {
       body = Component;
     }

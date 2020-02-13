@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Loading from "../UILibrary/Loading";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Loading from './Loading';
 
 const WidgetCard = ({
   className,
@@ -9,16 +9,14 @@ const WidgetCard = ({
   list,
   isLoading
 }) => {
-  const widgetClassName = "widget-card " + className,
-    widgetHeaderClassName = "widget-header " + className + "-header",
-    widgetBodyClassName = "widget-body " + className + "-body";
-  let body = "No results found";
+  const widgetClassName = `widget-card ${className}`;
+  const widgetHeaderClassName = `widget-header ${className}-header`;
+  const widgetBodyClassName = `widget-body ${className}-body`;
+  let body = 'No results found';
   if (isLoading) {
     body = <Loading />;
   } else if (list.length > 0) {
-    body = list.map((data, index) => {
-      return <Component data={data} key={index} />;
-    });
+    body = list.map((data, index) => <Component data={data} key={index} />);
   } else return null;
   if (!Component) {
     return null;

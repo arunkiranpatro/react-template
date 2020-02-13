@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { setErrors } from "../store/actions/errorActions";
+import React from 'react';
+import { connect } from 'react-redux';
+import { setErrors } from '../store/actions/errorActions';
 
 class ErrorBoundary extends React.Component {
   componentDidCatch(error, info) {
@@ -19,10 +19,8 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    errors: state.errors
-  };
-};
+const mapStateToProps = state => ({
+  errors: state.errors
+});
 
 export default connect(mapStateToProps, { setErrors })(ErrorBoundary);

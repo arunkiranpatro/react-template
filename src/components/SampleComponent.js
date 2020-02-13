@@ -1,6 +1,6 @@
-import React from "react";
-import Layout from "./UILibrary/Layout";
-import LoadingGif from "./UILibrary/LoadingGif";
+import React from 'react';
+import Layout from './UILibrary/Layout';
+import LoadingGif from './UILibrary/LoadingGif';
 
 export default function SampleComponent() {
   return (

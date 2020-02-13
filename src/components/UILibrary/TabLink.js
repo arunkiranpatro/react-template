@@ -1,12 +1,14 @@
-import React from "react";
+import React from 'react';
 
 const TabLink = props => {
-  const { id, handleClick, activeId, children } = props;
-  let className = "tab-link",
-    ariaSelected = "false";
+  const {
+    id, handleClick, activeId, children
+  } = props;
+  let className = 'tab-link';
+  let ariaSelected = 'false';
   if (activeId === id) {
-    className += " active-tab";
-    ariaSelected = "true";
+    className += ' active-tab';
+    ariaSelected = 'true';
   }
   function selectTab() {
     handleClick(id);
