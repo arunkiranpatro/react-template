@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import TabLink from '../components/UILibrary/TabLink';
-import Tabs from '../components/UILibrary/Tabs';
+import TabLink from '../../components/UILibrary/TabLink';
+import Tabs from '../../components/UILibrary/Tabs';
 
 describe('A TabLink Test Suite', () => {
     it('should have active class', () => {
         const markup = shallow(
             <TabLink id="1" activeId="1">
-                Tab-1
+                s Tab-1
             </TabLink>
         );
 

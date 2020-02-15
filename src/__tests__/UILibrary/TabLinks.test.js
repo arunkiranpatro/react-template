@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import TabLink from '../components/UILibrary/TabLink';
-import TabLinks from '../components/UILibrary/TabLinks';
+import TabLink from '../../components/UILibrary/TabLink';
+import TabLinks from '../../components/UILibrary/TabLinks';
 
 describe('A TabLink Test Suite', () => {
     it('should render ul', () => {

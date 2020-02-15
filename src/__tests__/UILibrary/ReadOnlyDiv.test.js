@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Details from '../components/UILibrary/ReadOnlyData';
+import Details from '../../components/UILibrary/ReadOnlyData';
 
 describe('A read only div suite', () => {
     it('should render with class name', () => {
