@@ -30,7 +30,7 @@ describe('A Tab Test Suite', () => {
         expect(markup.find('div')).toHaveLength(1);
         expect(markup.hasClass('tab-body')).toBe(true);
     });
-    it('should not render children when active', () => {
+    it('should  render children when active', () => {
         const markup = shallow(
             <Tab id="1" activeId="1" deferLoaded>
                 <div>Test1</div>
