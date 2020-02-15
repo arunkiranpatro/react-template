@@ -1,4 +1,4 @@
-const debounce = (func, delay) => {
+const debounce = function(func, delay) {
     let inDebounce;
     return function() {
         const context = this;

@@ -1,4 +1,4 @@
-const throttle = (func, limit) => {
+const throttle = function(func, limit) {
     let inThrottle;
     return function() {
         const args = arguments;

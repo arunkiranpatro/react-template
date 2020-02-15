@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Layout = function(props) {
     let { className, columns } = props;
@@ -21,6 +22,8 @@ const Layout = function(props) {
         let columnClassName = `column-${tempColumnName} ${className}-column-`;
         let rowClassName = `${'row' + ' '}${className}-row-`;
         columnClassName += i;
+
+        /* push all columns for each row */
         rows.push(
             <div className={columnClassName} key={columnClassName}>
                 {myChildren[i - 1]}
@@ -39,6 +42,15 @@ const Layout = function(props) {
         }
     }
     return <div className={containerClassName}>{mainBody}</div>;
+};
+
+Layout.propTypes = {
+    className: PropTypes.string,
+    columns: PropTypes.number,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]),
 };
 
 export default Layout;

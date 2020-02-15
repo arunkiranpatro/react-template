@@ -9,7 +9,8 @@ function getResults(x) {
             const results = list.filter(value => {
                 if (value.search(x) != -1) {
                     return true;
-                } return false;
+                }
+                return false;
             });
             resolve(results);
         }, 1000);
@@ -20,9 +21,9 @@ function getResults(x) {
 
 export default function SampleComponent() {
     return (
-      <Layout columns="1">
-        Hello Dynamic Container
-        <AutoComplete getResults={getResults} />
-      </Layout>
+        <Layout columns={1}>
+            Hello Dynamic Container
+            <AutoComplete getResults={getResults} />
+        </Layout>
     );
 }
