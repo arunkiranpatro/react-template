@@ -1,11 +1,13 @@
-const debounce = function(func, delay) {
+function debounce(func, delay) {
     let inDebounce;
-    return function() {
+    return function innerDebounce() {
         const context = this;
         const args = arguments;
         clearTimeout(inDebounce);
-        inDebounce = setTimeout(() => func.apply(context, args), delay);
+        inDebounce = setTimeout(function runFunc() {
+            func.apply(context, args);
+        }, delay);
     };
-};
+}
 
 export default debounce;

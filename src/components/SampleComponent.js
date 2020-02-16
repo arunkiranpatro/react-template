@@ -21,9 +21,9 @@ function getResults(x) {
 
 export default function SampleComponent() {
     return (
-        <Layout columns={1}>
-            Hello Dynamic Container
-            <AutoComplete getResults={getResults} />
-        </Layout>
+      <Layout columns={1}>
+        Hello Dynamic Container
+        <AutoComplete getResults={getResults} />
+      </Layout>
     );
 }

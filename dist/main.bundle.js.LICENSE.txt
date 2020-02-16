@@ -4,6 +4,20 @@ object-assign
 @license MIT
 */
 
+/*!
+ * array-sort <https://github.com/jonschlinkert/array-sort>
+ *
+ * Copyright (c) 2015-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+/*!
+ * get-value <https://github.com/jonschlinkert/get-value>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
 /** @license React v0.18.0
  * scheduler.production.min.js
  *

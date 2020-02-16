@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import ArraySort from 'array-sort';
 
-const Table = function(props) {
+function Table(props) {
     const {
         onSort = onSortDefault,
         renderTableHeader,
@@ -9,26 +10,20 @@ const Table = function(props) {
     } = props;
     const [sortColumn, setSortColumn] = useState(props.sortColumn);
     const [sortDirection, setSortDirection] = useState(props.sortDirection);
-
     function onSortDefault(column) {
         let { data } = props;
         if (column === sortColumn) {
             const direction = sortDirection === 'desc' ? 'asc' : 'desc';
             const reverse = direction === 'desc';
-            import('array-sort').then(ArraySort => {
-                data = ArraySort(data, column, { reverse });
-            });
+            data = ArraySort(data, column, { reverse });
             setSortColumn(column);
             setSortDirection(direction);
         } else {
-            import('array-sort').then(ArraySort => {
-                data = ArraySort(data, column, { reverse: true });
-            });
+            data = ArraySort(data, column, { reverse: true });
             setSortColumn(column);
             setSortDirection('desc');
         }
     }
-
     const config = {
         onSort,
         sortColumn,
@@ -36,12 +31,12 @@ const Table = function(props) {
     };
 
     return (
-        <table className="table-container">
-            {renderTableHeader(config)}
-            <tbody>{renderTableBody(props.data)}</tbody>
-        </table>
+      <table className="table-container">
+        {renderTableHeader(config)}
+        <tbody>{renderTableBody(props.data)}</tbody>
+      </table>
     );
-};
+}
 
 Table.propTypes = {
     sortColumn: PropTypes.string.isRequired,

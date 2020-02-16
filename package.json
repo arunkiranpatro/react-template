@@ -7,7 +7,7 @@
         "test": "jest",
         "start": "./node_modules/.bin/webpack-dev-server",
         "sass": "./node_modules/.bin/sass ./css/index.scss ./dist/styles.css",
-        "lint": "eslint --ext .jsx,.js src"
+        "lint": "eslint --ext .jsx,.js src "
     },
     "keywords": [],
     "author": "Arun Kiran Patro",

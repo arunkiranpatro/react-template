@@ -1,8 +1,9 @@
 import React from 'react';
 import { FaCopy } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import copyToClipboard from '../utils/CopyToClipboard';
 
-const ReadOnlyData = function(props) {
+function ReadOnlyData(props) {
     const { label, value, ccicon = false, children, className = '' } = props;
     let body;
     if (children) {
@@ -20,13 +21,17 @@ const ReadOnlyData = function(props) {
             )}
         {body}
         {ccicon && (
-        <button className="cc-icon" aria-label="show all">
+        <button
+          className="cc-icon"
+          aria-label="show all"
+          onClick={copyToClipboard}
+        >
           <FaCopy />
         </button>
             )}
       </div>
     );
-};
+}
 ReadOnlyData.propTypes = {
     label: PropTypes.string,
     value: PropTypes.string,

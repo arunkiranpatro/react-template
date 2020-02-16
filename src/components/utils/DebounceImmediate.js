@@ -1,6 +1,6 @@
-const debounceImmediate = function(func, delay) {
+function debounceImmediate(func, delay) {
     let inDebounce;
-    return function() {
+    return function innerDebounce() {
         const context = this;
         const args = arguments;
         if (inDebounce) {
@@ -8,11 +8,11 @@ const debounceImmediate = function(func, delay) {
             inDebounce = setTimeout(() => func.apply(context, args), delay);
         } else {
             func.apply(context, args);
-            inDebounce = setTimeout(() => {
+            inDebounce = setTimeout(function voidDebuounce() {
                 inDebounce = void 0;
             }, delay);
         }
     };
-};
+}
 
 export default debounceImmediate;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Layout = function(props) {
+function Layout(props) {
     let { className, columns } = props;
     let mainBody = [];
     let rows = [];
@@ -10,7 +10,7 @@ const Layout = function(props) {
     const myChildren = React.Children.toArray(props.children);
     className = className || '';
     const containerClassName = `row-col-container ${className}`;
-    columns = Number.parseInt(columns);
+    columns = Number.parseInt(columns, 10);
     if (myChildren.length <= 0) {
         return null;
     }
@@ -25,24 +25,24 @@ const Layout = function(props) {
 
         /* push all columns for each row */
         rows.push(
-            <div className={columnClassName} key={columnClassName}>
-                {myChildren[i - 1]}
-            </div>
+          <div className={columnClassName} key={columnClassName}>
+            {myChildren[i - 1]}
+          </div>
         );
         /** suppose children =5 and columns=2  */
         if (i % columns === 0 || i === myChildren.length) {
             rowClassName += rowNum;
             mainBody.push(
-                <div className={rowClassName} key={`row${i}`}>
-                    {rows}
-                </div>
+              <div className={rowClassName} key={`row${i}`}>
+                {rows}
+              </div>
             );
             rowNum++;
             rows = [];
         }
     }
     return <div className={containerClassName}>{mainBody}</div>;
-};
+}
 
 Layout.propTypes = {
     className: PropTypes.string,
