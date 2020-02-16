@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ArraySort from 'array-sort';
 import PropTypes from 'prop-types';
 
 const Table = function(props) {
@@ -16,11 +15,15 @@ const Table = function(props) {
         if (column === sortColumn) {
             const direction = sortDirection === 'desc' ? 'asc' : 'desc';
             const reverse = direction === 'desc';
-            data = ArraySort(data, column, { reverse });
+            import('array-sort').then(ArraySort => {
+                data = ArraySort(data, column, { reverse });
+            });
             setSortColumn(column);
             setSortDirection(direction);
         } else {
-            data = ArraySort(data, column, { reverse: true });
+            import('array-sort').then(ArraySort => {
+                data = ArraySort(data, column, { reverse: true });
+            });
             setSortColumn(column);
             setSortDirection('desc');
         }
@@ -33,10 +36,10 @@ const Table = function(props) {
     };
 
     return (
-      <table className="table-container">
-        {renderTableHeader(config)}
-        <tbody>{renderTableBody(props.data)}</tbody>
-      </table>
+        <table className="table-container">
+            {renderTableHeader(config)}
+            <tbody>{renderTableBody(props.data)}</tbody>
+        </table>
     );
 };
 

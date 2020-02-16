@@ -1,10 +1,12 @@
-import React from 'react';
-import Moment from 'react-moment';
+import React, { Suspense } from 'react';
 import Table from './UILibrary/Table';
 import TableColumn from './UILibrary/TableColumn';
 import TableRows from './UILibrary/TableRows';
 import TableRow from './UILibrary/TableRow';
 import TableColumns from './UILibrary/TableColumns';
+import Loading from './UILibrary/Loading';
+
+const Moment = React.lazy(() => import('react-moment'));
 
 const mockdata = [
     {
@@ -92,50 +94,54 @@ const mockdata = [
 const SampleTable = () => {
     function renderTablebody(data) {
         const childBody = data.map(result => (
-          <TableRows key={result.id}>
-            <TableRow>{result.id}</TableRow>
-            <TableRow>{result.first_name}</TableRow>
-            <TableRow>{result.last_name}</TableRow>
-            <TableRow>{result.email}</TableRow>
-            <TableRow>{result.gender}</TableRow>
-            <TableRow>
-              <Moment format="DD-MM-YYYY hh:mm a">{result.DOB}</Moment>
-            </TableRow>
-          </TableRows>
+            <TableRows key={result.id}>
+                <TableRow>{result.id}</TableRow>
+                <TableRow>{result.first_name}</TableRow>
+                <TableRow>{result.last_name}</TableRow>
+                <TableRow>{result.email}</TableRow>
+                <TableRow>{result.gender}</TableRow>
+                <TableRow>
+                    <Suspense fallback={<Loading />}>
+                        <Moment format="DD-MM-YYYY hh:mm a">
+                            {result.DOB}
+                        </Moment>
+                    </Suspense>
+                </TableRow>
+            </TableRows>
         ));
         return childBody;
     }
     function renderTableHeader(props) {
         return (
-          <TableColumns {...props}>
-            <TableColumn id="id" sortable>
-              ID
-            </TableColumn>
-            <TableColumn id="first_name" sortable>
-              First Name
-            </TableColumn>
-            <TableColumn id="last_name" sortable>
-              Last Name
-            </TableColumn>
-            <TableColumn id="email" sortable>
-              Email
-            </TableColumn>
-            <TableColumn id="gender">Gender</TableColumn>
-            <TableColumn id="DOB" sortable>
-              Date of Birth
-            </TableColumn>
-          </TableColumns>
+            <TableColumns {...props}>
+                <TableColumn id="id" sortable>
+                    ID
+                </TableColumn>
+                <TableColumn id="first_name" sortable>
+                    First Name
+                </TableColumn>
+                <TableColumn id="last_name" sortable>
+                    Last Name
+                </TableColumn>
+                <TableColumn id="email" sortable>
+                    Email
+                </TableColumn>
+                <TableColumn id="gender">Gender</TableColumn>
+                <TableColumn id="DOB" sortable>
+                    Date of Birth
+                </TableColumn>
+            </TableColumns>
         );
     }
 
     return (
-      <Table
-        data={mockdata}
-        renderTableHeader={renderTableHeader}
-        renderTableBody={renderTablebody}
-        sortColumn="id"
-        sortDirection="desc"
-      />
+        <Table
+            data={mockdata}
+            renderTableHeader={renderTableHeader}
+            renderTableBody={renderTablebody}
+            sortColumn="id"
+            sortDirection="desc"
+        />
     );
 };
 export default SampleTable;
