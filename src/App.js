@@ -1,13 +1,11 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './store/index';
 import Tabs from './components/UILibrary/Tabs';
 import Tab from './components/UILibrary/Tab';
 import TabLinks from './components/UILibrary/TabLinks';
 import TabLink from './components/UILibrary/TabLink';
 import SingleDynamicContainer from './components/UILibrary/SingleDynamicContainer';
-import ErrorBoundary from './components/ErrorBoundary';
 import SampleTable from './components/SampleTable';
+import AutoComplete from './components/UILibrary/AutoComplete';
 
 import './css/index.scss';
 
@@ -17,25 +15,41 @@ function lazyComponent() {
   SampleComponent = React.createElement(SampleComponent);
   SingleDynamicContainer.loadComponent(SampleComponent);
 }
+
+function getResults(x) {
+  const list = ['arun', 'ramya', 'ram', 'wk'];
+  const p = new Promise(function(resolve, reject) {
+      setTimeout(function() {
+          const results = list.filter(value => {
+              if (value.search(x) !== -1) {
+                  return true;
+              }
+              return false;
+          });
+          resolve(results);
+      }, 1000);
+  });
+
+  return p;
+}
+
 const App = () => (
   <div className="container">
-    <Provider store={store}>
-      <ErrorBoundary>
         <Tabs>
           <TabLinks>
-            <TabLink id="0">Tab-1</TabLink>
-            <TabLink id="1">Tab-2</TabLink>
+            <TabLink id="0">Table</TabLink>
+            <TabLink id="1">AutoComplete</TabLink>
           </TabLinks>
           <Tab id="0" name="Tab-1">
-            <a onClick={lazyComponent}>Test Dynamic container</a>
+            {/* eslint-disable-next-line */}
+            <a onClick={lazyComponent} >Test Dynamic container</a>
             <SingleDynamicContainer initial={<SampleTable />} />
           </Tab>
           <Tab id="1" name="Tab-2">
             <h2>Welcome to Tab 2</h2>
+             <AutoComplete getResults={getResults} />
           </Tab>
         </Tabs>
-      </ErrorBoundary>
-    </Provider>
   </div>
 );
 

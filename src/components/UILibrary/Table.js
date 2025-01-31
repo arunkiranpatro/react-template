@@ -19,6 +19,7 @@ function Table(props) {
             setSortColumn(column);
             setSortDirection(direction);
         } else {
+            // eslint-disable-next-line
             data = ArraySort(data, column, { reverse: true });
             setSortColumn(column);
             setSortDirection('desc');

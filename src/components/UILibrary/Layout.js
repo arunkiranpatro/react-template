@@ -20,6 +20,7 @@ function Layout(props) {
     rowNum = 1;
     for (let i = 1; i <= myChildren.length; i++) {
         let columnClassName = `column-${tempColumnName} ${className}-column-`;
+        // eslint-disable-next-line
         let rowClassName = `${'row' + ' '}${className}-row-`;
         columnClassName += i;
 
