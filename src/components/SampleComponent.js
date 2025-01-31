@@ -7,7 +7,7 @@ function getResults(x) {
     const p = new Promise(function(resolve, reject) {
         setTimeout(function() {
             const results = list.filter(value => {
-                if (value.search(x) != -1) {
+                if (value.search(x) !== -1) {
                     return true;
                 }
                 return false;

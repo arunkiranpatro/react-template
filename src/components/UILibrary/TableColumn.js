@@ -14,11 +14,11 @@ const TableColumn = props => {
   if (sortable) {
     className += " sortable";
     onClick = sortColumn;
-    props.sortColumn === id
-      ? props.sortDirection === "desc"
-        ? ((sortIcon = "\u2193"), (ariaSort = "descending"))
-        : ((sortIcon = "\u2191"), (ariaSort = "ascending"))
-      : (sortIcon = "");
+    if(props.sortColumn === id){
+        sortIcon = props.sortDirection === "desc" ? "\u2193" : "\u2191";
+        ariaSort = props.sortDirection === "desc" ? "descending" : "ascending";
+    }
+    else sortIcon="";     
   }
 
   rest = {

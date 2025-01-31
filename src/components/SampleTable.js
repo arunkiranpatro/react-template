@@ -1,12 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import Table from './UILibrary/Table';
 import TableColumn from './UILibrary/TableColumn';
 import TableRows from './UILibrary/TableRows';
 import TableRow from './UILibrary/TableRow';
 import TableColumns from './UILibrary/TableColumns';
-import Loading from './UILibrary/Loading';
-
-const Moment = React.lazy(() => import('react-moment'));
 
 const mockdata = [
     {
@@ -101,11 +98,10 @@ const SampleTable = () => {
             <TableRow>{result.email}</TableRow>
             <TableRow>{result.gender}</TableRow>
             <TableRow>
-              <Suspense fallback={<Loading />}>
-                <Moment format="DD-MM-YYYY hh:mm a">
+             
+                
                   {result.DOB}
-                </Moment>
-              </Suspense>
+                
             </TableRow>
           </TableRows>
         ));
