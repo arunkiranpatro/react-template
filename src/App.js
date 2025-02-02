@@ -6,6 +6,7 @@ import TabLink from './components/UILibrary/TabLink';
 import SingleDynamicContainer from './components/UILibrary/SingleDynamicContainer';
 import SampleTable from './components/SampleTable';
 import AutoComplete from './components/UILibrary/AutoComplete';
+import MultiSelectDropdown from './components/UILibrary/MultiSelectDropdown';
 
 import './css/index.scss';
 
@@ -20,6 +21,10 @@ function getResults(x) {
   const list = ['arun', 'ramya', 'ram', 'wk'];
   const p = new Promise(function(resolve, reject) {
       setTimeout(function() {
+          if (!x || x === '') {
+              resolve(list);
+              return;
+          }
           const results = list.filter(value => {
               if (value.search(x) !== -1) {
                   return true;
@@ -39,6 +44,7 @@ const App = () => (
           <TabLinks>
             <TabLink id="0">Table</TabLink>
             <TabLink id="1">AutoComplete</TabLink>
+            <TabLink id="2">MultiSelectDropdown</TabLink>
           </TabLinks>
           <Tab id="0" name="Tab-1">
             {/* eslint-disable-next-line */}
@@ -48,6 +54,10 @@ const App = () => (
           <Tab id="1" name="Tab-2">
             <h2>Welcome to Tab 2</h2>
              <AutoComplete getResults={getResults} />
+          </Tab>
+          <Tab id="2" name="Tab-3">
+            <h2>Welcome to Tab 2</h2>
+             <MultiSelectDropdown getResults={getResults} />
           </Tab>
         </Tabs>
   </div>

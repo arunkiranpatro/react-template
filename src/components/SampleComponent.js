@@ -15,7 +15,6 @@ function getResults(x) {
             resolve(results);
         }, 1000);
     });
-
     return p;
 }
 
